@@ -1,0 +1,22 @@
+# Maven build output
+target/
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VS Code files
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment / secret files
+application-local.properties
+*.env
+
+# Keep Maven wrapper jar if wrapper exists
+!.mvn/wrapper/maven-wrapper.jar

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RealEstate Pro</title>
+
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+        body{background:#f4f7fb;color:#1f2937}
+        header{background:white;padding:18px 8%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 18px #0001;position:sticky;top:0;z-index:10}
+        .logo{font-size:25px;font-weight:800}.logo span{color:#2563eb}
+        nav a{margin-left:24px;text-decoration:none;color:#374151;font-weight:600}
+        nav a:hover{color:#2563eb}
+        .hero{height:500px;background:linear-gradient(#111827cc,#111827cc),url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1400&q=80");background-size:cover;background-position:center;display:flex;align-items:center;padding:0 8%;color:white}
+        .hero div{max-width:620px}.hero h1{font-size:52px;margin-bottom:18px}
+        .hero p{font-size:18px;line-height:1.6;margin-bottom:28px;color:#e5e7eb}
+        .btn,button{background:#2563eb;color:white;padding:14px 25px;border:0;border-radius:10px;text-decoration:none;font-weight:bold;cursor:pointer}
+        .btn:hover,button:hover{background:#1d4ed8}
+        .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding:38px 8%;background:white}
+        .stat{background:#f9fafb;padding:25px;border-radius:16px;text-align:center}
+        .stat h2{font-size:34px;color:#2563eb}.stat p{color:#6b7280}
+        section{padding:65px 8%}.title{text-align:center;margin-bottom:35px}
+        .title h2{font-size:34px}.title p{color:#6b7280;margin-top:8px}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+        .card{background:white;border-radius:18px;overflow:hidden;box-shadow:0 8px 28px #0001;transition:.3s}
+        .card:hover{transform:translateY(-7px)}
+        .card img{width:100%;height:170px;object-fit:cover}
+        .info{padding:22px}.info h3{margin-bottom:8px}.info p{color:#6b7280;margin-bottom:10px}
+        .price{color:#2563eb;font-size:21px;font-weight:800}
+        .form{max-width:680px;margin:auto;background:white;padding:28px;border-radius:18px;box-shadow:0 8px 28px #0001;display:grid;gap:15px}
+        input,select{padding:14px;border:1px solid #d1d5db;border-radius:10px;outline:none}
+        input:focus,select:focus{border-color:#2563eb}
+        .message{text-align:center;margin-top:15px;font-weight:bold}
+        .success{color:green}.error{color:red}
+        footer{text-align:center;background:#111827;color:white;padding:25px}
+        @media(max-width:768px){header{flex-direction:column;gap:15px}nav a{margin:0 8px}.hero h1{font-size:36px}.stats{grid-template-columns:1fr}}
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">RealEstate<span>Pro</span></div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#properties">Properties</a>
+        <a href="#booking">Appointment</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <div>
+        <h1>Find Your Dream Property Easily</h1>
+        <p>Search properties, contact agents, and book appointments through our real estate management system.</p>
+        <a href="#properties" class="btn">View Properties</a>
+    </div>
+</div>
+
+<div class="stats">
+    <div class="stat"><h2>120+</h2><p>Properties</p></div>
+    <div class="stat"><h2>35+</h2><p>Agents</p></div>
+    <div class="stat"><h2>500+</h2><p>Clients</p></div>
+</div>
+
+<section id="properties">
+    <div class="title">
+        <h2>Featured Properties</h2>
+        <p>Choose the best property for your lifestyle</p>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80">
+            <div class="info">
+                <h3>Luxury Family House</h3>
+                <p>Colombo, Sri Lanka</p>
+                <div class="price">Rs. 45M</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80">
+            <div class="info">
+                <h3>Modern Apartment</h3>
+                <p>Negombo, Sri Lanka</p>
+                <div class="price">Rs. 22M</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80">
+            <div class="info">
+                <h3>Beach Side Villa</h3>
+                <p>Galle, Sri Lanka</p>
+                <div class="price">Rs. 60M</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="booking">
+    <div class="title">
+        <h2>Book an Appointment</h2>
+        <p>Your booking will be saved to the MySQL database</p>
+    </div>
+
+    <form class="form" id="appointmentForm">
+        <input type="text" id="customerName" placeholder="Full Name" required>
+        <input type="email" id="email" placeholder="Email Address" required>
+
+        <select id="property" required>
+            <option value="">Select Property</option>
+            <option>Luxury Family House</option>
+            <option>Modern Apartment</option>
+            <option>Beach Side Villa</option>
+        </select>
+
+        <input type="date" id="appointmentDate" required>
+        <button type="submit">Book Appointment</button>
+    </form>
+
+    <p class="message" id="message"></p>
+</section>
+
+<footer>
+    © 2026 RealEstatePro | Real Estate Agent Finder and Appointment System
+</footer>
+
+<script>
+    const form = document.getElementById("appointmentForm");
+    const message = document.getElementById("message");
+
+    form.addEventListener("submit", async function(event) {
+        event.preventDefault();
+
+        const appointment = {
+            customerName: document.getElementById("customerName").value,
+            email: document.getElementById("email").value,
+            property: document.getElementById("property").value,
+            appointmentDate: document.getElementById("appointmentDate").value
+        };
+
+        try {
+            const response = await fetch("http://localhost:8080/api/appointments", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(appointment)
+            });
+
+            if (response.ok) {
+                message.textContent = "Appointment booked successfully!";
+                message.className = "message success";
+                form.reset();
+            } else {
+                message.textContent = "Booking failed. Check backend code.";
+                message.className = "message error";
+            }
+        } catch (error) {
+            message.textContent = "Backend not connected. Run Spring Boot first.";
+            message.className = "message error";
+        }
+    });
+</script>
+
+</body>
+</html>
