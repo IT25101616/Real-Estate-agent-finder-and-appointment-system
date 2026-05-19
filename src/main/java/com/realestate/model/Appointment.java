@@ -17,8 +17,7 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(String customerName, String email,
-                       String property, String appointmentDate) {
+    public Appointment(String customerName, String email, String property, String appointmentDate) {
         this.customerName = customerName;
         this.email = email;
         this.property = property;
@@ -29,9 +28,7 @@ public class Appointment {
         return id;
     }
 
-    public String getCustomerName() {
-        return customerName;
-    }
+    public String getCustomerName() {return customerName;}
 
     public String getEmail() {
         return email;
