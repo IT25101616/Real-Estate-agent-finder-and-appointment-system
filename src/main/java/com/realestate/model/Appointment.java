@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "appointments")
-public class Appointment {
+public class Appointment extends ServiceRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,8 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(String clientName, String clientEmail, String phoneNumber, String appointmentDate,String message) {
+    public Appointment(String createdBy, String clientName, String clientEmail, String phoneNumber, String appointmentDate,String message) {
+        super(createdBy);
         this.clientName = clientName;
         this.clientEmail = clientEmail;
         this.phoneNumber = phoneNumber;
@@ -28,13 +29,15 @@ public class Appointment {
         this.message = message;
     }
 
+    @Override
+    public String getRecordType() {
+        return "Appointment Record";
+    }
+
     public Long getId() {
         return id;
     }
 
-    public String getClientName() {
-        return clientName;
-    }
 
     public String getClientEmail() {
         return clientEmail;
@@ -56,9 +59,7 @@ public class Appointment {
         this.id = id;
     }
 
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
-    }
+
 
     public void setClientEmail(String clientEmail) {
         this.clientEmail = clientEmail;
