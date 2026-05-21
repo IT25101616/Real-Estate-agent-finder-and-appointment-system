@@ -12,23 +12,22 @@ public class Appointment extends ServiceRecord{
 
     private String clientName;
     private String clientEmail;
-    private String property;
+    private String phoneNumber;
     private String appointmentDate;
 
 
     public Appointment() {
     }
 
-    public Appointment(String createdBy, String clientName, String clientEmail, String property, String appointmentDate) {
+    public Appointment(String createdBy, String clientName, String clientEmail, String phoneNumber, String appointmentDate) {
         super(createdBy);
         this.clientName = clientName;
         this.clientEmail = clientEmail;
-        this.property = property;
+        this.phoneNumber = phoneNumber;
         this.appointmentDate = appointmentDate;
     }
 
     public String getRecordType() {
-
         return "Appointment Record";
     }
 
@@ -36,35 +35,32 @@ public class Appointment extends ServiceRecord{
         return id;
     }
 
-    public String getCustomerName() {
+    public String getClientName() {
         return clientName;
     }
 
-    public String getEmail() {
-
+    public String getClientEmail() {
         return clientEmail;
     }
 
-    public String getProperty() {
-        return property;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     public String getAppointmentDate() {
         return appointmentDate;
     }
 
-    public void setCustomerName(String clientName) {
-
+    public void setClientName(String clientName) {
         this.clientName = clientName;
     }
 
-    public void setEmail(String clientEmail) {
-
+    public void setClientEmail(String clientEmail) {
         this.clientEmail = clientEmail;
     }
 
-    public void setProperty(String property) {
-        this.property = property;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public void setAppointmentDate(String appointmentDate) {
