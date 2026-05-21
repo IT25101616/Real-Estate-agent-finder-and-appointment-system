@@ -1,48 +1,42 @@
 package com.realestate.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public class User {
+@Table(name = "users")
+public class User extends Person {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected int userId;
-
-    protected String name;
-    protected String email;
+    private String password;
+    private String phone;
 
     public User() {
     }
 
-    public User(int userId, String name, String email) {
-        this.userId = userId;
-        this.name = name;
-        this.email = email;
+    public User(String name, String email, String password, String phone) {
+        super(name, email);
+        this.password = password;
+        this.phone = phone;
     }
 
-    public int getUserId() {
-        return userId;
+    @Override
+    public String getRoleName() {
+        return "User";
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public String getPassword() {
+        return password;
     }
 
-    public String getName() {
-        return name;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
