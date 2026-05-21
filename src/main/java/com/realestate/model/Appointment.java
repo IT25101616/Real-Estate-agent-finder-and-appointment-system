@@ -20,7 +20,7 @@ public class Appointment extends ServiceRecord{
     }
 
     public Appointment(String createdBy, String clientName, String clientEmail, String property, String appointmentDate) {
-        super(createdBy);
+        super(createdBy); //super keyword
         this.customerName = clientName;
         this.email = clientEmail;
         this.property = property;
