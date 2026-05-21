@@ -38,6 +38,9 @@ public class Appointment extends ServiceRecord {
         return id;
     }
 
+    public String getClientName() {
+        return clientName;
+    }
 
     public String getClientEmail() {
         return clientEmail;
