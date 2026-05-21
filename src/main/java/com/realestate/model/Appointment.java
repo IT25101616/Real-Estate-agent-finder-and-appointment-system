@@ -21,7 +21,7 @@ public class Appointment extends ServiceRecord{
     }
 
     public Appointment(String createdBy, String clientName, String clientEmail, String phoneNumber, String appointmentDate,String message) {
-        super(createdBy);
+        super(createdBy);//super
         this.clientName = clientName;
         this.clientEmail = clientEmail;
         this.phoneNumber = phoneNumber;
