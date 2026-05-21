@@ -10,7 +10,7 @@ public class Appointment extends ServiceRecord{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String customerName;
+    private String clientName;
     private String email;
     private String property;
     private String appointmentDate;
@@ -21,7 +21,7 @@ public class Appointment extends ServiceRecord{
 
     public Appointment(String createdBy, String clientName, String clientEmail, String property, String appointmentDate) {
         super(createdBy);
-        this.customerName = clientName;
+        this.clientName = clientName;
         this.email = clientEmail;
         this.property = property;
         this.appointmentDate = appointmentDate;
@@ -37,7 +37,7 @@ public class Appointment extends ServiceRecord{
     }
 
     public String getCustomerName() {
-        return customerName;
+        return clientName;
     }
 
     public String getEmail() {
@@ -53,7 +53,8 @@ public class Appointment extends ServiceRecord{
     }
 
     public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+
+        this.clientName = customerName;
     }
 
     public void setEmail(String email) {
