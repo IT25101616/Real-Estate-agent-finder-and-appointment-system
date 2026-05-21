@@ -10,7 +10,7 @@ public class Appointment extends ServiceRecord{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String customerName;
+    private String customerName; //attributes
     private String email;
     private String property;
     private String appointmentDate;
