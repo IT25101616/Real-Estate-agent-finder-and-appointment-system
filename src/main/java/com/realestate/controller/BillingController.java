@@ -1,11 +1,14 @@
-package com.realestate.billing;
+package com.realestate.controller;
 
+import com.realestate.model.Billing;
+import com.realestate.service.BillingService;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
-@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/billings")
+@CrossOrigin(origins = "*")
 public class BillingController {
 
     private final BillingService billingService;
@@ -14,46 +17,29 @@ public class BillingController {
         this.billingService = billingService;
     }
 
-    // CREATE
     @PostMapping
-    public Billing createBill(@RequestBody Billing billing) {
-        return billingService.createBill(billing);
+    public Billing createBilling(@RequestBody Billing billing) {
+        return billingService.create(billing);
     }
 
-    // READ all
     @GetMapping
-    public List<Billing> getAllBills() {
-        return billingService.getAllBills();
+    public List<Billing> getAllBillings() {
+        return billingService.getAll();
     }
 
-    // READ by id
     @GetMapping("/{id}")
-    public Billing getBillById(@PathVariable int id) {
-        return billingService.getBillById(id);
+    public Billing getBillingById(@PathVariable Long id) {
+        return billingService.getById(id);
     }
 
-    // READ by customer email
-    @GetMapping("/email/{email}")
-    public List<Billing> getBillsByEmail(@PathVariable String email) {
-        return billingService.getBillsByEmail(email);
-    }
-
-    // READ by status
-    @GetMapping("/status/{status}")
-    public List<Billing> getBillsByStatus(@PathVariable String status) {
-        return billingService.getBillsByStatus(status);
-    }
-
-    // UPDATE
     @PutMapping("/{id}")
-    public Billing updateBill(@PathVariable int id, @RequestBody Billing billing) {
-        return billingService.updateBill(id, billing);
+    public Billing updateBilling(@PathVariable Long id,
+                                 @RequestBody Billing billing) {
+        return billingService.update(id, billing);
     }
 
-    // DELETE
     @DeleteMapping("/{id}")
-    public String deleteBill(@PathVariable int id) {
-        boolean deleted = billingService.deleteBill(id);
-        return deleted ? "Bill deleted successfully" : "Bill not found";
+    public String deleteBilling(@PathVariable Long id) {
+        return billingService.delete(id) ? "Billing deleted successfully" : "Billing not found";
     }
 }
