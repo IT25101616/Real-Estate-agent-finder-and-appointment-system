@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "appointments")
-public class Appointment extends ServiceRecord{
+public class Appointment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,18 +20,12 @@ public class Appointment extends ServiceRecord{
     public Appointment() {
     }
 
-    public Appointment(String createdBy, String clientName, String clientEmail, String phoneNumber, String appointmentDate,String message) {
-        super(createdBy);
+    public Appointment(String clientName, String clientEmail, String phoneNumber, String appointmentDate,String message) {
         this.clientName = clientName;
         this.clientEmail = clientEmail;
         this.phoneNumber = phoneNumber;
         this.appointmentDate = appointmentDate;
         this.message = message;
-    }
-
-    @Override
-    public String getRecordType() {
-        return "Appointment Record";
     }
 
     public Long getId() {
