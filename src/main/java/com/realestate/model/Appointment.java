@@ -62,7 +62,9 @@ public class Appointment extends ServiceRecord {
         this.id = id;
     }
 
-
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
 
     public void setClientEmail(String clientEmail) {
         this.clientEmail = clientEmail;
