@@ -11,7 +11,7 @@ public class Appointment extends ServiceRecord{
     private Long id;
 
     private String clientName;
-    private String email;
+    private String clientEmail;
     private String property;
     private String appointmentDate;
 
@@ -22,7 +22,7 @@ public class Appointment extends ServiceRecord{
     public Appointment(String createdBy, String clientName, String clientEmail, String property, String appointmentDate) {
         super(createdBy);
         this.clientName = clientName;
-        this.email = clientEmail;
+        this.clientEmail = clientEmail;
         this.property = property;
         this.appointmentDate = appointmentDate;
     }
@@ -41,7 +41,8 @@ public class Appointment extends ServiceRecord{
     }
 
     public String getEmail() {
-        return email;
+
+        return clientEmail;
     }
 
     public String getProperty() {
@@ -57,8 +58,9 @@ public class Appointment extends ServiceRecord{
         this.clientName = clientName;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String clientEmail) {
+
+        this.clientEmail = clientEmail;
     }
 
     public void setProperty(String property) {
