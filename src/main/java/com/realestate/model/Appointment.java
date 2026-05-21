@@ -3,32 +3,42 @@ package com.realestate.model;
 import jakarta.persistence.*;
 
 @Entity
-public class Appointment {
+@Table(name = "appointments")
+public class Appointment extends ServiceRecord{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     private String customerName;
     private String email;
     private String property;
     private String appointmentDate;
 
+
     public Appointment() {
     }
 
-    public Appointment(String customerName, String email, String property, String appointmentDate) {
-        this.customerName = customerName;
-        this.email = email;
+    public Appointment(String createdBy, String clientName, String clientEmail, String property, String appointmentDate) {
+        super(createdBy);
+        this.customerName = clientName;
+        this.email = clientEmail;
         this.property = property;
         this.appointmentDate = appointmentDate;
     }
 
-    public int getId() {
+    public String getRecordType() {
+
+        return "Appointment Record";
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public String getCustomerName() {return customerName;}
+    public String getCustomerName() {
+        return customerName;
+    }
 
     public String getEmail() {
         return email;
