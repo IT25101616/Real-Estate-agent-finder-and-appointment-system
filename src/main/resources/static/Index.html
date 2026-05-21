@@ -3,206 +3,811 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RealEstate Pro</title>
-
+    <title>RealEstate Pro — Luxury Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-        body{background:#f4f7fb;color:#1f2937}
-        header{background:white;padding:18px 8%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 18px #0001;position:sticky;top:0;z-index:10}
-        .logo{font-size:25px;font-weight:800}.logo span{color:#2563eb}
-        nav a{margin-left:24px;text-decoration:none;color:#374151;font-weight:600}
-        nav a:hover{color:#2563eb}
-        .hero{height:500px;background:linear-gradient(#111827cc,#111827cc),url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1400&q=80");background-size:cover;background-position:center;display:flex;align-items:center;padding:0 8%;color:white}
-        .hero div{max-width:620px}.hero h1{font-size:52px;margin-bottom:18px}
-        .hero p{font-size:18px;line-height:1.6;margin-bottom:28px;color:#e5e7eb}
-        .btn,button{background:#2563eb;color:white;padding:14px 25px;border:0;border-radius:10px;text-decoration:none;font-weight:bold;cursor:pointer}
-        .btn:hover,button:hover{background:#1d4ed8}
-        .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding:38px 8%;background:white}
-        .stat{background:#f9fafb;padding:25px;border-radius:16px;text-align:center}
-        .stat h2{font-size:34px;color:#2563eb}.stat p{color:#6b7280}
-        section{padding:65px 8%}.title{text-align:center;margin-bottom:35px}
-        .title h2{font-size:34px}.title p{color:#6b7280;margin-top:8px}
-        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
-        .card{background:white;border-radius:18px;overflow:hidden;box-shadow:0 8px 28px #0001;transition:.3s}
-        .card:hover{transform:translateY(-7px)}
-        .card img{width:100%;height:170px;object-fit:cover}
-        .info{padding:22px}.info h3{margin-bottom:8px}.info p{color:#6b7280;margin-bottom:10px}
-        .price{color:#2563eb;font-size:21px;font-weight:800}
-        .form{max-width:680px;margin:auto;background:white;padding:28px;border-radius:18px;box-shadow:0 8px 28px #0001;display:grid;gap:15px}
-        input,select{padding:14px;border:1px solid #d1d5db;border-radius:10px;outline:none}
-        input:focus,select:focus{border-color:#2563eb}
-        .message{text-align:center;margin-top:15px;font-weight:bold}
-        .success{color:green}.error{color:red}
-        footer{text-align:center;background:#111827;color:white;padding:25px}
-        @media(max-width:768px){header{flex-direction:column;gap:15px}nav a{margin:0 8px}.hero h1{font-size:36px}.stats{grid-template-columns:1fr}}
+        :root {
+            --gold: #c9a84c;
+            --gold-light: #e8cb7a;
+            --dark: #0a0a0a;
+            --dark2: #111111;
+            --dark3: #1a1a1a;
+            --dark4: #222222;
+            --text: #e8e0d0;
+            --text-muted: #888877;
+            --border: rgba(201,168,76,0.2);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { background:var(--dark); color:var(--text); font-family:'Montserrat',sans-serif; font-weight:300; }
+
+        /* HEADER */
+        header {
+            background:rgba(10,10,10,0.95);
+            backdrop-filter:blur(20px);
+            padding:22px 7%;
+            display:flex; justify-content:space-between; align-items:center;
+            border-bottom:1px solid var(--border);
+            position:sticky; top:0; z-index:100;
+        }
+        .logo { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; letter-spacing:2px; }
+        .logo span { color:var(--gold); font-style:italic; }
+        nav a {
+            margin-left:32px; text-decoration:none; color:var(--text-muted);
+            font-size:11px; letter-spacing:2.5px; text-transform:uppercase; font-weight:500;
+            transition:.3s;
+        }
+        nav a:hover { color:var(--gold); }
+
+        /* HERO */
+        .hero {
+            min-height:90vh;
+            background: linear-gradient(135deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.4) 100%),
+            url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80");
+            background-size:cover; background-position:center;
+            display:flex; align-items:center; padding:0 7%;
+            position:relative; overflow:hidden;
+        }
+        .hero::before {
+            content:'';
+            position:absolute; left:0; bottom:0; right:0; height:200px;
+            background:linear-gradient(transparent, var(--dark));
+        }
+        .hero-line {
+            position:absolute; top:10%; right:7%;
+            width:1px; height:300px;
+            background:linear-gradient(var(--gold), transparent);
+            opacity:0.4;
+        }
+        .hero-content { max-width:700px; position:relative; z-index:1; }
+        .hero-tag {
+            display:inline-block; font-size:10px; letter-spacing:4px; text-transform:uppercase;
+            color:var(--gold); border:1px solid var(--border); padding:8px 18px; margin-bottom:28px;
+            animation: fadeUp 1s ease both;
+        }
+        .hero h1 {
+            font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300; line-height:1.05;
+            margin-bottom:22px; animation:fadeUp 1s 0.2s ease both;
+        }
+        .hero h1 em { color:var(--gold); font-style:italic; }
+        .hero p {
+            font-size:14px; line-height:2; color:var(--text-muted); max-width:480px;
+            margin-bottom:38px; animation:fadeUp 1s 0.4s ease both;
+        }
+        .btn-gold {
+            display:inline-block; padding:16px 38px; background:transparent;
+            border:1px solid var(--gold); color:var(--gold);
+            font-family:'Montserrat',sans-serif; font-size:11px; letter-spacing:3px; text-transform:uppercase;
+            text-decoration:none; cursor:pointer;
+            transition:.4s; animation:fadeUp 1s 0.6s ease both;
+            position:relative; overflow:hidden;
+        }
+        .btn-gold::before {
+            content:''; position:absolute; inset:0;
+            background:var(--gold); transform:scaleX(0); transform-origin:left;
+            transition:.4s; z-index:-1;
+        }
+        .btn-gold:hover { color:var(--dark); }
+        .btn-gold:hover::before { transform:scaleX(1); }
+
+        @keyframes fadeUp {
+            from { opacity:0; transform:translateY(24px); }
+            to { opacity:1; transform:translateY(0); }
+        }
+
+        /* STATS */
+        .stats {
+            display:grid; grid-template-columns:repeat(3,1fr);
+            border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+        }
+        .stat {
+            padding:42px; text-align:center;
+            border-right:1px solid var(--border);
+        }
+        .stat:last-child { border-right:none; }
+        .stat h2 { font-family:'Cormorant Garamond',serif; font-size:52px; color:var(--gold); font-weight:300; }
+        .stat p { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--text-muted); margin-top:8px; }
+
+        /* SECTIONS */
+        section { padding:80px 7%; }
+        .section-title { margin-bottom:52px; }
+        .section-title h2 {
+            font-family:'Cormorant Garamond',serif; font-size:46px; font-weight:300;
+        }
+        .section-title h2 em { color:var(--gold); font-style:italic; }
+        .section-title p { font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-top:10px; }
+        .title-line { width:60px; height:1px; background:var(--gold); margin-top:18px; }
+
+        /* PROPERTY CARDS */
+        .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2px; }
+        .card {
+            background:var(--dark2); overflow:hidden; cursor:pointer;
+            position:relative; group:1;
+        }
+        .card-img { width:100%; height:220px; object-fit:cover; transition:.6s; filter:brightness(0.85) saturate(0.8); }
+        .card:hover .card-img { transform:scale(1.05); filter:brightness(0.75) saturate(0.6); }
+        .card-overlay {
+            position:absolute; inset:0; background:linear-gradient(transparent 40%, rgba(0,0,0,0.9));
+            pointer-events:none;
+        }
+        .card-info { padding:24px; border-top:1px solid var(--border); }
+        .card-info h3 { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400; }
+        .card-info p { font-size:11px; color:var(--text-muted); letter-spacing:1px; margin:8px 0; }
+        .card-price { color:var(--gold); font-size:18px; font-family:'Cormorant Garamond',serif; }
+
+        /* AGENTS */
+        .agent-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1px; background:var(--border); }
+        .agent-card {
+            background:var(--dark2); padding:32px;
+            border:1px solid transparent; transition:.3s;
+        }
+        .agent-card:hover { border-color:var(--border); background:var(--dark3); }
+        .agent-initial {
+            width:52px; height:52px; background:var(--dark4);
+            border:1px solid var(--gold); border-radius:50%;
+            display:flex; align-items:center; justify-content:center;
+            font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--gold);
+            margin-bottom:20px;
+        }
+        .agent-card h3 { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:400; margin-bottom:14px; }
+        .agent-card p { font-size:12px; color:var(--text-muted); margin:6px 0; }
+        .badge {
+            display:inline-block; margin-top:14px; padding:5px 14px;
+            border:1px solid var(--gold); color:var(--gold);
+            font-size:9px; letter-spacing:2.5px; text-transform:uppercase;
+        }
+
+        /* FORMS */
+        .form-wrap { max-width:680px; margin:auto; }
+        .form-grid { display:grid; gap:14px; }
+        .row2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+        .form-field { display:flex; flex-direction:column; gap:6px; }
+        .form-field label { font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--text-muted); }
+        .form-field input,
+        .form-field select {
+            background:var(--dark3); border:1px solid var(--border); color:var(--text);
+            padding:14px 16px; font-family:'Montserrat',sans-serif; font-size:13px;
+            outline:none; transition:.3s;
+        }
+        .form-field input:focus,
+        .form-field select:focus { border-color:var(--gold); }
+        .form-field select option { background:var(--dark3); }
+        .submit-btn {
+            width:100%; padding:16px; background:transparent;
+            border:1px solid var(--gold); color:var(--gold);
+            font-family:'Montserrat',sans-serif; font-size:11px; letter-spacing:3px; text-transform:uppercase;
+            cursor:pointer; transition:.4s; position:relative; overflow:hidden;
+        }
+        .submit-btn::before {
+            content:''; position:absolute; inset:0;
+            background:var(--gold); transform:scaleX(0); transform-origin:left; transition:.4s; z-index:-1;
+        }
+        .submit-btn:hover { color:var(--dark); }
+        .submit-btn:hover::before { transform:scaleX(1); }
+        .msg { text-align:center; margin-top:16px; font-size:13px; }
+        .success { color:#6fcf97; }
+        .error { color:#eb5757; }
+
+        /* BILLING TABLE */
+        .bill-table-wrap { margin-top:40px; overflow-x:auto; }
+        table { width:100%; border-collapse:collapse; }
+        th {
+            font-size:9px; letter-spacing:2.5px; text-transform:uppercase;
+            color:var(--text-muted); padding:16px; text-align:left;
+            border-bottom:1px solid var(--border);
+        }
+        td { padding:16px; font-size:13px; border-bottom:1px solid rgba(255,255,255,0.04); }
+        .delete { background:transparent; border:1px solid #eb5757; color:#eb5757; padding:7px 14px; font-size:10px; letter-spacing:1px; cursor:pointer; transition:.3s; }
+        .delete:hover { background:#eb5757; color:white; }
+        .edit-btn { background:transparent; border:1px solid var(--border); color:var(--text-muted); padding:7px 14px; font-size:10px; letter-spacing:1px; cursor:pointer; margin-right:8px; transition:.3s; }
+        .edit-btn:hover { border-color:var(--gold); color:var(--gold); }
+
+        footer {
+            text-align:center; background:var(--dark2);
+            border-top:1px solid var(--border);
+            padding:36px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted);
+        }
+
+        /* LOGIN GATE */
+        .login-gate {
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:40px 7%;
+            background:
+                    linear-gradient(135deg, rgba(10,10,10,0.94), rgba(10,10,10,0.75)),
+                    url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80");
+            background-size:cover;
+            background-position:center;
+        }
+        .login-box {
+            width:100%;
+            max-width:760px;
+            background:rgba(17,17,17,0.96);
+            border:1px solid var(--border);
+            padding:38px;
+        }
+        .login-tabs {
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:10px;
+            margin-bottom:25px;
+        }
+        .tab-btn {
+            padding:13px;
+            background:var(--dark3);
+            border:1px solid var(--border);
+            color:var(--text-muted);
+            cursor:pointer;
+            letter-spacing:2px;
+            text-transform:uppercase;
+            font-size:10px;
+        }
+        .tab-btn.active {
+            border-color:var(--gold);
+            color:var(--gold);
+        }
+        .auth-form { display:none; }
+        .auth-form.active { display:grid; }
+
+        @media(max-width:768px) {
+            header { flex-direction:column; gap:16px; }
+            nav a { margin:0 10px; }
+            .hero h1 { font-size:44px; }
+            .stats, .row2 { grid-template-columns:1fr; }
+        }
     </style>
 </head>
-
 <body>
 
-<header>
-    <div class="logo">RealEstate<span>Pro</span></div>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#properties">Properties</a>
-        <a href="#agents">Agents</a>
-        <a href="#booking">Appointment</a>
-    </nav>
-</header>
+<div id="loginGate" class="login-gate">
+    <div class="login-box">
+        <div class="section-title" style="margin-bottom:28px;">
+            <h2>Customer <em>Login</em></h2>
+            <p>Login first to enter the real estate system</p>
+            <div class="title-line"></div>
+        </div>
 
-<div class="hero">
-    <div>
-        <h1>Find Your Dream Property Easily</h1>
-        <p>Search properties, contact agents, and book appointments through our real estate management system.</p>
-        <a href="#properties" class="btn">View Properties</a>
+        <div class="login-tabs">
+            <button class="tab-btn active" id="showLoginBtn" type="button">Login</button>
+            <button class="tab-btn" id="showRegisterBtn" type="button">Register</button>
+        </div>
+
+        <form class="form-grid auth-form active" id="loginForm">
+            <div class="row2">
+                <div class="form-field">
+                    <label>Email Address</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-field">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">Login and Enter Website</button>
+        </form>
+
+        <form class="form-grid auth-form" id="registerForm">
+            <div class="row2">
+                <div class="form-field">
+                    <label>Full Name</label>
+                    <input type="text" id="regName" required>
+                </div>
+                <div class="form-field">
+                    <label>Email Address</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+            </div>
+            <div class="row2">
+                <div class="form-field">
+                    <label>Phone Number</label>
+                    <input type="text" id="regPhone" required>
+                </div>
+                <div class="form-field">
+                    <label>Password</label>
+                    <input type="password" id="regPassword" required>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">Register Customer</button>
+        </form>
+
+        <p class="msg" id="loginMessage"></p>
     </div>
 </div>
 
-<div class="stats">
-    <div class="stat"><h2>120+</h2><p>Properties</p></div>
-    <div class="stat"><h2>35+</h2><p>Agents</p></div>
-    <div class="stat"><h2>500+</h2><p>Clients</p></div>
+<div id="appContent" style="display:none;">
+
+    <header>
+        <div class="logo">Real<span>Estate</span>Pro</div>
+        <nav>
+            <a href="#properties">Properties</a>
+            <a href="#agents">Agents</a>
+            <a href="#booking">Appointment</a>
+            <a href="#billing">Billing</a>
+            <a href="#" id="logoutLink">Logout</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-line"></div>
+        <div class="hero-content">
+            <div class="hero-tag">Sri Lanka's Premier Properties</div>
+            <h1>Find Your<br><em>Dream Property</em><br>Easily</h1>
+            <p>Search properties, contact agents, book appointments, and manage billing through one elegant real estate system.</p>
+            <a href="#agents" class="btn-gold">Meet Our Agents</a>
+        </div>
+    </div>
+
+    <div class="stats">
+        <div class="stat"><h2>120+</h2><p>Properties</p></div>
+        <div class="stat"><h2>6</h2><p>Team Agents</p></div>
+        <div class="stat"><h2>100+</h2><p>Customers</p></div>
+    </div>
+
+    <section id="properties">
+        <div class="section-title">
+            <h2>Featured <em>Properties</em></h2>
+            <p>Curated for exceptional living</p>
+            <div class="title-line"></div>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <img class="card-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80">
+                <div class="card-overlay"></div>
+                <div class="card-info">
+                    <h3>Luxury Family House</h3>
+                    <p>Colombo, Sri Lanka</p>
+                    <div class="card-price">Rs. 45,000,000</div>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80">
+                <div class="card-overlay"></div>
+                <div class="card-info">
+                    <h3>Modern Apartment</h3>
+                    <p>Negombo, Sri Lanka</p>
+                    <div class="card-price">Rs. 22,000,000</div>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img" src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80">
+                <div class="card-overlay"></div>
+                <div class="card-info">
+                    <h3>Beach Side Villa</h3>
+                    <p>Galle, Sri Lanka</p>
+                    <div class="card-price">Rs. 60,000,000</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="agents" style="background:var(--dark2);">
+        <div class="section-title">
+            <h2>Our <em>Agents</em></h2>
+            <p>Expert guidance every step of the way</p>
+            <div class="title-line"></div>
+        </div>
+        <div class="agent-grid">
+            <div class="agent-card">
+                <div class="agent-initial">G</div>
+                <h3>Ganishkaanth E</h3>
+                <p>it25101885@my.sliit.lk</p>
+                <p>0753553517</p>
+                <p>Colombo 15</p>
+                <span class="badge">Agent</span>
+            </div>
+            <div class="agent-card">
+                <div class="agent-initial">C</div>
+                <h3>Chandrasiri IPCD</h3>
+                <p>it25103217@my.sliit.lk</p>
+                <p>0710713930</p>
+                <p>Polonnaruwa</p>
+                <span class="badge">Agent</span>
+            </div>
+            <div class="agent-card">
+                <div class="agent-initial">T</div>
+                <h3>Thisanga Dharmapriya</h3>
+                <p>it25103521@my.sliit.lk</p>
+                <p>0777435258</p>
+                <p>Pannipitiya</p>
+                <span class="badge">Agent</span>
+            </div>
+            <div class="agent-card">
+                <div class="agent-initial">N</div>
+                <h3>Nethmi Navodya</h3>
+                <p>it25102584@my.sliit.lk</p>
+                <p>0704651182</p>
+                <p>Horana</p>
+                <span class="badge">Agent</span>
+            </div>
+            <div class="agent-card">
+                <div class="agent-initial">S</div>
+                <h3>Shaveesha Muthumali</h3>
+                <p>shaveeshaf@gmail.com</p>
+                <p>0741247825</p>
+                <p>Katunayake</p>
+                <span class="badge">Agent</span>
+            </div>
+            <div class="agent-card">
+                <div class="agent-initial">T</div>
+                <h3>Thisara Dewdunu</h3>
+                <p>it25101616@my.sliit.lk</p>
+                <p>0701350936</p>
+                <p>Battaramulla</p>
+                <span class="badge">Billing Manager</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking">
+        <div class="section-title">
+            <h2>Book an <em>Appointment</em></h2>
+            <p>Schedule a private viewing</p>
+            <div class="title-line"></div>
+        </div>
+        <div class="form-wrap">
+            <form class="form-grid" id="appointmentForm">
+                <div class="row2">
+                    <div class="form-field"><label>Full Name</label><input type="text" id="customerName" required></div>
+                    <div class="form-field"><label>Email Address</label><input type="email" id="email" required></div>
+                </div>
+                <div class="row2">
+                    <div class="form-field"><label>Phone Number</label><input type="text" id="phoneNumber" required></div>
+                    <div class="form-field"><label>Select Property</label>
+                        <select id="property" required>
+                            <option value="">— Choose —</option>
+                            <option>Luxury Family House</option>
+                            <option>Modern Apartment</option>
+                            <option>Beach Side Villa</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-field"><label>Preferred Date</label><input type="date" id="appointmentDate" required></div>
+                <button type="submit" class="submit-btn">Book Appointment</button>
+            </form>
+            <p class="msg" id="message"></p>
+        </div>
+    </section>
+
+    <section id="billing" style="background:var(--dark2);">
+        <div class="section-title">
+            <h2>Billing <em>Management</em></h2>
+            <p>Transparent financial records</p>
+            <div class="title-line"></div>
+        </div>
+        <div class="form-wrap">
+            <form class="form-grid" id="billingForm">
+                <input type="hidden" id="billId">
+                <div class="row2">
+                    <div class="form-field"><label>Customer Name</label><input type="text" id="billCustomer" required></div>
+                    <div class="form-field"><label>Customer Email</label><input type="email" id="billEmail" required></div>
+                </div>
+                <div class="form-field"><label>Select Property</label>
+                    <select id="billProperty" required>
+                        <option value="">— Choose —</option>
+                        <option>Luxury Family House</option>
+                        <option>Modern Apartment</option>
+                        <option>Beach Side Villa</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label>Service Charge</label>
+                    <input type="text" id="serviceCharge" value="Rs.100,000.00" readonly required>
+                </div>
+                <div class="row2">
+                    <div class="form-field"><label>Payment Method</label>
+                        <select id="paymentMethod" required>
+                            <option value="">— Choose —</option>
+                            <option value="Cash">Cash Payment</option>
+                            <option value="Card">Card Payment</option>
+                        </select>
+                    </div>
+                    <div class="form-field"><label>Advance Payment </label>
+                        <select id="AdvancePayment" required>
+                            <option value="">— Choose —</option>
+                            <option>Rs.20,000.00</option><option>Rs.30,000.00</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="cardDetailsBox" style="display:none;">
+                    <div class="section-title" style="margin-bottom:20px; margin-top:10px;">
+                        <h2 style="font-size:28px;">Card <em>Details</em></h2>
+                        <p>Required only for card payment</p>
+                        <div class="title-line"></div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Card Number</label>
+                        <input type="text" id="cardNumber" maxlength="19" placeholder="0000 0000 0000 0000">
+                    </div>
+
+                    <div class="row2">
+                        <div class="form-field">
+                            <label>CVN Number</label>
+                            <input type="password" id="cvnNumber" maxlength="3" placeholder="123">
+                        </div>
+                        <div class="form-field">
+                            <label>Card Expire Date</label>
+                            <input type="month" id="cardExpireDate">
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Name on Card</label>
+                        <input type="text" id="nameOnCard" placeholder="Name printed on card">
+                    </div>
+                </div>
+
+                <div class="form-field"><label>Billing Date</label><input type="date" id="billingDate" required></div>
+                <button type="submit" class="submit-btn">Save Bill</button>
+            </form>
+            <p class="msg" id="billingMessage"></p>
+
+        </div>
+    </section>
+
+    <footer>© 2026 RealEstatePro — Real Estate Agent Finder, Appointment & Billing System</footer>
+
 </div>
-
-<section id="properties">
-    <div class="title">
-        <h2>Featured Properties</h2>
-        <p>Choose the best property for your lifestyle</p>
-    </div>
-
-    <div class="grid">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80">
-            <div class="info">
-                <h3>Luxury Family House</h3>
-                <p>Colombo, Sri Lanka</p>
-                <div class="price">Rs. 45M</div>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80">
-            <div class="info">
-                <h3>Modern Apartment</h3>
-                <p>Negombo, Sri Lanka</p>
-                <div class="price">Rs. 22M</div>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80">
-            <div class="info">
-                <h3>Beach Side Villa</h3>
-                <p>Galle, Sri Lanka</p>
-                <div class="price">Rs. 60M</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="agents">
-    <div class="title">
-        <h2>Our Professional Agents</h2>
-        <p>Meet our trusted real estate agents</p>
-    </div>
-
-    <div class="grid" id="agentList"></div>
-</section>
-
-<section id="booking">
-    <div class="title">
-        <h2>Book an Appointment</h2>
-        <p>Your booking will be saved to the MySQL database</p>
-    </div>
-
-    <form class="form" id="appointmentForm">
-        <input type="text" id="customerName" placeholder="Full Name" required>
-        <input type="email" id="email" placeholder="Email Address" required>
-
-        <select id="property" required>
-            <option value="">Select Property</option>
-            <option>Luxury Family House</option>
-            <option>Modern Apartment</option>
-            <option>Beach Side Villa</option>
-        </select>
-
-        <input type="date" id="appointmentDate" required>
-        <button type="submit">Book Appointment</button>
-    </form>
-
-    <p class="message" id="message"></p>
-</section>
-
-<footer>
-    © 2026 RealEstatePro | Real Estate Agent Finder and Appointment System
-</footer>
 
 <script>
-    const form = document.getElementById("appointmentForm");
-    const message = document.getElementById("message");
+    const API = "http://localhost:8080/api";
 
-    form.addEventListener("submit", async function(event) {
-        event.preventDefault();
+    let loggedUser = null;
 
-        const appointment = {
-            customerName: document.getElementById("customerName").value,
-            email: document.getElementById("email").value,
-            property: document.getElementById("property").value,
-            appointmentDate: document.getElementById("appointmentDate").value
+    const loginGate = document.getElementById("loginGate");
+    const appContent = document.getElementById("appContent");
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+    const loginMessage = document.getElementById("loginMessage");
+    const showLoginBtn = document.getElementById("showLoginBtn");
+    const showRegisterBtn = document.getElementById("showRegisterBtn");
+
+    showLoginBtn.addEventListener("click", () => {
+        showLoginBtn.classList.add("active");
+        showRegisterBtn.classList.remove("active");
+        loginForm.classList.add("active");
+        registerForm.classList.remove("active");
+        loginMessage.textContent = "";
+    });
+
+    showRegisterBtn.addEventListener("click", () => {
+        showRegisterBtn.classList.add("active");
+        showLoginBtn.classList.remove("active");
+        registerForm.classList.add("active");
+        loginForm.classList.remove("active");
+        loginMessage.textContent = "";
+    });
+
+    registerForm.addEventListener("submit", async e => {
+        e.preventDefault();
+
+        const user = {
+            name: document.getElementById("regName").value,
+            email: document.getElementById("regEmail").value,
+            phone: document.getElementById("regPhone").value,
+            password: document.getElementById("regPassword").value
         };
 
         try {
-            const response = await fetch("http://localhost:8080/api/appointments", {
+            const r = await fetch(API + "/users/register", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(appointment)
+                body: JSON.stringify(user)
             });
 
-            if (response.ok) {
-                message.textContent = "Appointment booked successfully!";
-                message.className = "message success";
-                form.reset();
-            } else {
-                message.textContent = "Booking failed. Check backend code.";
-                message.className = "message error";
+            loginMessage.textContent = r.ok ? "Registration successful. Now login using your email." : "Registration failed.";
+            loginMessage.className = "msg " + (r.ok ? "success" : "error");
+
+            if (r.ok) {
+                registerForm.reset();
+                showLoginBtn.click();
+                document.getElementById("loginEmail").value = user.email;
             }
-        } catch (error) {
-            message.textContent = "Backend not connected. Run Spring Boot first.";
-            message.className = "message error";
+        } catch {
+            loginMessage.textContent = "Backend not connected. Run Spring Boot first.";
+            loginMessage.className = "msg error";
         }
     });
 
-    async function loadAgents() {
+    loginForm.addEventListener("submit", async e => {
+        e.preventDefault();
+
+        const user = {
+            email: document.getElementById("loginEmail").value,
+            password: document.getElementById("loginPassword").value
+        };
+
         try {
-            const response = await fetch("http://localhost:8080/api/agents");
-            const agents = await response.json();
-
-            let output = "";
-
-            agents.forEach(agent => {
-                output += `
-                    <div class="card">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80">
-                        <div class="info">
-                            <h3>${agent.name}</h3>
-                            <p><b>Email:</b> ${agent.email}</p>
-                            <p><b>Phone:</b> ${agent.phone}</p>
-                            <p><b>Location:</b> ${agent.location}</p>
-                        </div>
-                    </div>
-                `;
+            const r = await fetch(API + "/users/login", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(user)
             });
 
-            document.getElementById("agentList").innerHTML = output;
+            const data = await r.json();
 
-        } catch (error) {
-            document.getElementById("agentList").innerHTML =
-                "<p>Agent details cannot load. Run backend first.</p>";
+            if (r.ok && data && data.email) {
+                loggedUser = data;
+
+                loginGate.style.display = "none";
+                appContent.style.display = "block";
+
+                document.getElementById("customerName").value = loggedUser.name;
+                document.getElementById("email").value = loggedUser.email;
+                document.getElementById("phoneNumber").value = loggedUser.phone;
+
+                loginForm.reset();
+            } else {
+                loginMessage.textContent = "Invalid email or password.";
+                loginMessage.className = "msg error";
+            }
+        } catch {
+            loginMessage.textContent = "Invalid email/password or backend not connected.";
+            loginMessage.className = "msg error";
         }
+    });
+
+    document.getElementById("logoutLink").addEventListener("click", e => {
+        e.preventDefault();
+        loggedUser = null;
+        appContent.style.display = "none";
+        loginGate.style.display = "flex";
+        loginMessage.textContent = "Logged out successfully.";
+        loginMessage.className = "msg success";
+    });
+
+    document.getElementById("appointmentForm").addEventListener("submit", async e => {
+        e.preventDefault();
+        const msg = document.getElementById("message");
+
+        if (loggedUser == null) {
+            msg.textContent = "Please login before booking an appointment.";
+            msg.className = "msg error";
+            return;
+        }
+        const appointment = {
+            createdBy:"Customer", clientName:document.getElementById("customerName").value,
+            clientEmail:document.getElementById("email").value, phoneNumber:document.getElementById("phoneNumber").value,
+            appointmentDate:document.getElementById("appointmentDate").value,
+            message:"Customer booked appointment for "+document.getElementById("property").value
+        };
+        try {
+            const r = await fetch(API+"/appointments",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(appointment)});
+            msg.textContent = r.ok ? "Appointment booked successfully!" : "Save failed. Check backend.";
+            msg.className = "msg "+(r.ok?"success":"error");
+            if(r.ok) e.target.reset();
+        } catch { msg.textContent = "Backend not connected. Run Spring Boot first."; msg.className = "msg error"; }
+    });
+    const paymentMethodSelect = document.getElementById("paymentMethod");
+    const cardDetailsBox = document.getElementById("cardDetailsBox");
+
+    paymentMethodSelect.addEventListener("change", () => {
+        if (paymentMethodSelect.value === "Card") {
+            cardDetailsBox.style.display = "block";
+
+            document.getElementById("cardNumber").required = true;
+            document.getElementById("cvnNumber").required = true;
+            document.getElementById("cardExpireDate").required = true;
+            document.getElementById("nameOnCard").required = true;
+        } else {
+            cardDetailsBox.style.display = "none";
+
+            document.getElementById("cardNumber").required = false;
+            document.getElementById("cvnNumber").required = false;
+            document.getElementById("cardExpireDate").required = false;
+            document.getElementById("nameOnCard").required = false;
+
+            document.getElementById("cardNumber").value = "";
+            document.getElementById("cvnNumber").value = "";
+            document.getElementById("cardExpireDate").value = "";
+            document.getElementById("nameOnCard").value = "";
+        }
+    });
+
+    document.getElementById("cardNumber").addEventListener("input", function () {
+        let value = this.value.replace(/\D/g, "");
+        value = value.substring(0, 16);
+        this.value = value.replace(/(.{4})/g, "$1 ").trim();
+    });
+
+    document.getElementById("cvnNumber").addEventListener("input", function () {
+        this.value = this.value.replace(/\D/g, "").substring(0, 3);
+    });
+
+    document.getElementById("billingForm").addEventListener("submit", async e => {
+        e.preventDefault();
+
+        const id = document.getElementById("billId").value;
+        const serviceCharge = Number(document.getElementById("serviceCharge").value);
+        const paymentMethod = document.getElementById("paymentMethod").value;
+
+        const cardNumber = document.getElementById("cardNumber").value.replace(/\s/g, "");
+        const cvnNumber = document.getElementById("cvnNumber").value;
+
+        if (paymentMethod === "Card") {
+            if (cardNumber.length !== 16) {
+                const bm = document.getElementById("billingMessage");
+                bm.textContent = "Card number must have 16 digits.";
+                bm.className = "msg error";
+                return;
+            }
+
+            if (cvnNumber.length !== 3) {
+                const bm = document.getElementById("billingMessage");
+                bm.textContent = "CVN number must have 3 digits.";
+                bm.className = "msg error";
+                return;
+            }
+        }
+
+        const bill = {
+            createdBy: "Admin",
+            customerName: document.getElementById("billCustomer").value,
+            email: document.getElementById("billEmail").value,
+            propertyName: document.getElementById("billProperty").value,
+            serviceCharge: serviceCharge,
+            taxAmount: 0,
+            totalAmount: serviceCharge,
+            paymentMethod: paymentMethod,
+            paymentStatus: document.getElementById("paymentStatus").value,
+            billingDate: document.getElementById("billingDate").value,
+            appointmentId: 1,
+
+            cardNumber: paymentMethod === "Card" ? cardNumber : null,
+            cvnNumber: paymentMethod === "Card" ? cvnNumber : null,
+            cardExpireDate: paymentMethod === "Card" ? document.getElementById("cardExpireDate").value : null,
+            nameOnCard: paymentMethod === "Card" ? document.getElementById("nameOnCard").value : null
+        };
+
+        try {
+            const r = await fetch(id ? API + "/billings/" + id : API + "/billings", {
+                method: id ? "PUT" : "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(bill)
+            });
+
+            const bm = document.getElementById("billingMessage");
+            bm.textContent = r.ok ? "Bill saved successfully!" : "Billing save failed.";
+            bm.className = "msg " + (r.ok ? "success" : "error");
+
+            if (r.ok) {
+                e.target.reset();
+                document.getElementById("billId").value = "";
+                cardDetailsBox.style.display = "none";
+                loadBills();
+            }
+        } catch (err) {
+            document.getElementById("billingMessage").textContent = "Backend not connected.";
+            document.getElementById("billingMessage").className = "msg error";
+        }
+    });
+    async function loadBills(){
+        const tb = document.getElementById("billingTable");
+        try {
+            const r = await fetch(API+"/billings"); const bills = await r.json();
+            if(!bills.length){tb.innerHTML=`<tr><td colspan="6" style="color:var(--text-muted);font-size:12px">No billing records found</td></tr>`;return;}
+            tb.innerHTML = bills.map(b=>`<tr><td>${b.billId}</td><td>${b.customerName}</td><td>${b.propertyName}</td><td>Rs. ${b.totalAmount}</td><td>${b.paymentStatus}</td><td><button class="edit-btn" onclick='editBill(${JSON.stringify(b)})'>Edit</button><button class="delete" onclick="deleteBill(${b.billId})">Delete</button></td></tr>`).join("");
+        } catch {tb.innerHTML=`<tr><td colspan="6" style="color:var(--text-muted);font-size:12px">Run Spring Boot backend to load bills</td></tr>`;}
     }
+    function editBill(b){
+        ["billId","billCustomer","billEmail","billProperty","serviceCharge","paymentMethod","paymentStatus","billingDate"]
+            .forEach((id,i)=>{document.getElementById(id).value=[b.billId,b.customerName,b.email,b.propertyName,b.serviceCharge,b.paymentMethod,b.paymentStatus,b.billingDate][i];});
 
-    loadAgents();
+        if (b.paymentMethod === "Card") {
+            cardDetailsBox.style.display = "block";
+            document.getElementById("cardNumber").value = b.cardNumber ? String(b.cardNumber).replace(/(.{4})/g, "$1 ").trim() : "";
+            document.getElementById("cvnNumber").value = b.cvnNumber || "";
+            document.getElementById("cardExpireDate").value = b.cardExpireDate || "";
+            document.getElementById("nameOnCard").value = b.nameOnCard || "";
+        } else {
+            cardDetailsBox.style.display = "none";
+        }
+
+        window.location.href="#billing";
+    }
+    async function deleteBill(id){await fetch(API+"/billings/"+id,{method:"DELETE"});loadBills();}
+    loadBills();
 </script>
-
 </body>
 </html>
