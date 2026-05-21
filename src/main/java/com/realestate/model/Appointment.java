@@ -52,9 +52,9 @@ public class Appointment extends ServiceRecord{
         return appointmentDate;
     }
 
-    public void setCustomerName(String customerName) {
+    public void setCustomerName(String clientName) {
 
-        this.clientName = customerName;
+        this.clientName = clientName;
     }
 
     public void setEmail(String email) {
